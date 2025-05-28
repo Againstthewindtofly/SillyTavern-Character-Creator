@@ -1,0 +1,15 @@
+export const __webpack_id__ = "src_locales_en_json";
+export const __webpack_ids__ = ["src_locales_en_json"];
+export const __webpack_modules__ = {
+
+/***/ "./src/locales/en.json":
+/*!*****************************!*\
+  !*** ./src/locales/en.json ***!
+  \*****************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"ui":{"popup":{"title":"Character Creator","connection_profile":"Connection Profile","context_to_send":"Context to Send","st_description":"Description of SillyTavern & Char Card","user_persona":"User\'s Persona","messages_to_include":"Messages to Include","message_type":{"none":"None","all":"All Messages","first":"First X Messages","last":"Last X Messages","range":"Range"},"first_x":"First","last_x":"Last","messages":"Messages","range":"Range:","to":"to","selected_chars_data":"Selected Characters\' Data","selected_world_info":"Selected World Info","existing_field_content":"Existing Field Content","generation_options":"Generation Options","max_context_tokens":"Max Context Tokens","max_context_type":{"profile":"Use profile preset","sampler":"Use active preset","custom":"Custom"},"max_response_tokens":"Max Response Tokens","output_format":"Output Format","output_format_type":{"none":"Plain Text","xml":"XML","json":"JSON"},"additional_instructions":"Additional Instructions","prompt_placeholder":"Add specific instructions here (e.g., \'Make the description sound mysterious\', \'Focus on their childhood trauma for personality\'). This applies to the next field you generate.","save_as_new_character":"Save as New Character","save_as_wi_entry":"Save as WI Entry","reset_fields":"Reset Fields","load_character_data":"Load Character Data","core_fields":"Core Fields","draft_fields":"Draft Fields","add_draft_field":"Add Draft Field","export":"Export","import":"Import","core_character_fields":"Core Character Fields","draft_fields_temporary":"Draft Fields (Temporary)","draft_fields_description":"These fields are temporary and only used to keep AI informed about the character. They won\'t be saved to the character card.","alternate_greetings":"Alternate Greetings","add":"Add","no_greetings_placeholder":"No alternate greetings defined. Click \\"Add\\" to create one.","greeting_placeholder":"Enter greeting content...","greeting_prompt_placeholder":"Enter specific prompt for this greeting..."},"settings":{"title":"Character Creator","main_context_template":"Main Context Template","restore_default":"Restore to default","select_template":"Select Main Context Template to Edit","prompt_templates":"Prompt Templates","select_prompt":"Select System Prompt to Edit","prompt_placeholder":"Edit the selected system prompt template here...","show_save_as_wi":"Show \\"Save as World Info Entry\\" option in popup","reset_everything":"I messed up, reset everything"},"buttons":{"generate":"Generate field content","continue":"Continue from current content","clear":"Clear field content","compare":"Compare with loaded character","delete":"Delete"},"roles":{"user":"User","assistant":"Assistant","system":"System"}}}');
+
+/***/ })
+
+};

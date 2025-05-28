@@ -11,6 +11,7 @@ import {
 import { diffWords } from 'diff';
 import { selected_group, st_echo, this_chid, world_names } from 'sillytavern-utils-lib/config';
 import { POPUP_TYPE } from 'sillytavern-utils-lib/types/popup';
+import { localization } from './localization.js';
 
 import {
   globalContext,
@@ -60,6 +61,10 @@ async function handleSettingsUI() {
 
   const settingsContainer = document.querySelector('.charCreator_settings');
   if (!settingsContainer) return;
+  
+  // 初始化本地化系统
+  await localization.initialize(globalContext);
+  localization.translateUI();
 
   const settings = settingsManager.getSettings();
 

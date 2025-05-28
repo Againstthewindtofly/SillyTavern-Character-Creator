@@ -1,0 +1,390 @@
+<div id="charCreatorPopup">
+    <h2 data-i18n-key="ui.popup.title">Character Creator</h2>
+    <div class="container">
+        <!-- Left Column: Settings & Context -->
+        <div class="column">
+            <div class="card">
+                <h3 data-i18n-key="ui.popup.connection_profile">Connection Profile</h3>
+                <select
+                    id="charCreator_connectionProfile"
+                    class="text_pole"
+                    title="Select a Connection Profile"
+                ></select>
+            </div>
+
+            <div class="card">
+                <h3 data-i18n-key="ui.popup.context_to_send">Context to Send</h3>
+                <div class="context-options">
+                    <!-- ST/CharCard Description -->
+                    <label class="checkbox_label" for="charCreator_stDescription">
+                        <input type="checkbox" id="charCreator_stDescription" />
+                        <span data-i18n-key="ui.popup.st_description">Description of SillyTavern & Char Card</span>
+                    </label>
+
+                    <!-- Persona -->
+                    <label class="checkbox_label" for="charCreator_includePersona">
+                        <input type="checkbox" id="charCreator_includePersona" />
+                        <span data-i18n-key="ui.popup.user_persona">User's Persona</span>
+                    </label>
+
+                    <!-- Message Inclusion -->
+                    <div class="message-options">
+                        <h4 data-i18n-key="ui.popup.messages_to_include">Messages to Include</h4>
+                        <select id="charCreator_messageType" class="text_pole">
+                            <option value="none" data-i18n-key="ui.popup.message_type.none">None</option>
+                            <option value="all" data-i18n-key="ui.popup.message_type.all">All Messages</option>
+                            <option value="first" data-i18n-key="ui.popup.message_type.first">First X Messages</option>
+                            <option value="last" data-i18n-key="ui.popup.message_type.last">Last X Messages</option>
+                            <option value="range" data-i18n-key="ui.popup.message_type.range">Range</option>
+                        </select>
+
+                        <div id="charCreator_firstX" style="display: none">
+                            <label>
+                                <span data-i18n-key="ui.popup.first_x">First</span>
+                                <input
+                                    type="number"
+                                    class="text_pole small message-input"
+                                    id="charCreator_firstXMessages"
+                                    min="1"
+                                    placeholder="X"
+                                />
+                                <span data-i18n-key="ui.popup.messages">Messages</span>
+                            </label>
+                        </div>
+                        <div id="charCreator_lastX" style="display: none">
+                            <label>
+                                <span data-i18n-key="ui.popup.last_x">Last</span>
+                                <input
+                                    type="number"
+                                    class="text_pole small message-input"
+                                    id="charCreator_lastXMessages"
+                                    min="1"
+                                    placeholder="X"
+                                />
+                                <span data-i18n-key="ui.popup.messages">Messages</span>
+                            </label>
+                        </div>
+                        <div id="charCreator_rangeX" style="display: none">
+                            <label>
+                                <span data-i18n-key="ui.popup.range">Range:</span>
+                                <input
+                                    type="number"
+                                    class="text_pole small message-input"
+                                    id="charCreator_rangeStart"
+                                    min="0"
+                                    placeholder="Start"
+                                />
+                                <span data-i18n-key="ui.popup.to">to</span>
+                                <input
+                                    type="number"
+                                    class="text_pole small message-input"
+                                    id="charCreator_rangeEnd"
+                                    min="1"
+                                    placeholder="End"
+                                />
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Include Character Context -->
+                    <label class="checkbox_label" for="charCreator_includeChars">
+                        <input type="checkbox" id="charCreator_includeChars" />
+                        <span data-i18n-key="ui.popup.selected_chars_data">Selected Characters' Data</span>
+                    </label>
+                    <div
+                        id="charCreator_charIncludeContainer"
+                        style="margin-top: 5px; padding-left: 15px; display: none"
+                    >
+                        <div id="charCreator_characterSelector" class="selector-summary"></div>
+                    </div>
+
+                    <!-- Include World Info Context -->
+                    <label class="checkbox_label" for="charCreator_includeWorldInfo" style="margin-top: 15px">
+                        <input type="checkbox" id="charCreator_includeWorldInfo" />
+                        <span data-i18n-key="ui.popup.selected_world_info">Selected World Info</span>
+                    </label>
+                    <div
+                        id="charCreator_worldInfoIncludeContainer"
+                        style="margin-top: 5px; padding-left: 15px; display: none"
+                    >
+                        <div id="charCreator_worldInfoSelector" class="selector-summary"></div>
+                    </div>
+
+                    <!-- Include Existing Fields -->
+                    <label class="checkbox_label" for="charCreator_includeExistingFields" style="margin-top: 15px">
+                        <input type="checkbox" id="charCreator_includeExistingFields" />
+                        <span data-i18n-key="ui.popup.existing_field_content">Existing Field Content</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 data-i18n-key="ui.popup.generation_options">Generation Options</h3>
+                <!-- Max Context -->
+                <label>
+                    <span data-i18n-key="ui.popup.max_context_tokens">Max Context Tokens</span>
+                    <select id="charCreator_maxContextType" class="text_pole" title="Select Max Context Type">
+                        <option value="profile" data-i18n-key="ui.popup.max_context_type.profile">Use profile preset</option>
+                        <option value="sampler" data-i18n-key="ui.popup.max_context_type.sampler">Use active preset</option>
+                        <option value="custom" data-i18n-key="ui.popup.max_context_type.custom">Custom</option>
+                    </select>
+                </label>
+                <label id="charCreator_maxTokens_container" style="display: none; margin-top: 10px">
+                    <input
+                        id="charCreator_maxTokens"
+                        type="number"
+                        class="text_pole"
+                        min="1"
+                        step="1"
+                        placeholder="Enter max tokens"
+                    />
+                </label>
+
+                <!-- Max Response Tokens -->
+                <label style="margin-top: 10px">
+                    <span data-i18n-key="ui.popup.max_response_tokens">Max Response Tokens</span>
+                    <input
+                        id="charCreator_maxResponseTokens"
+                        type="number"
+                        class="text_pole"
+                        min="1"
+                        step="1"
+                        placeholder="Enter max response tokens"
+                    />
+                </label>
+
+                <!-- Output Format -->
+                <label style="margin-top: 10px">
+                    <span data-i18n-key="ui.popup.output_format">Output Format</span>
+                    <select
+                        id="charCreator_outputFormat"
+                        class="text_pole"
+                        title="Select the desired output format from the AI"
+                    >
+                        <option value="none" data-i18n-key="ui.popup.output_format_type.none">Plain Text</option>
+                        <option value="xml" data-i18n-key="ui.popup.output_format_type.xml">XML</option>
+                        <option value="json" data-i18n-key="ui.popup.output_format_type.json">JSON</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="card">
+                <h3 data-i18n-key="ui.popup.additional_instructions">Additional Instructions</h3>
+                <select
+                    id="charCreator_promptPreset"
+                    class="text_pole"
+                    title="Select a Prompt Preset for additional instructions"
+                ></select>
+                <textarea
+                    id="charCreator_prompt"
+                    class="text_pole textarea_compact"
+                    data-i18n-attr="placeholder:ui.popup.prompt_placeholder"
+                    placeholder="Add specific instructions here (e.g., 'Make the description sound mysterious', 'Focus on their childhood trauma for personality'). This applies to the next field you generate."
+                    rows="4"
+                ></textarea>
+            </div>
+        </div>
+
+        <!-- Right Column: Character Fields -->
+        <div class="wide-column">
+            <!-- Field Actions -->
+            <div class="character-field-actions">
+                <button id="charCreator_saveAsNewCharacter">
+                    <i class="fa-solid fa-floppy-disk" style="margin-right: 10px"></i>
+                    <span data-i18n-key="ui.popup.save_as_new_character">Save as New Character</span>
+                </button>
+                <div id="charCreator_saveAsWorldInfoSelector" style="display: flex" data-i18n-attr="title:ui.popup.save_as_wi_entry" title="Save as WI Entry"></div>
+                <button id="charCreator_reset">
+                    <i class="fa-solid fa-rotate-left" style="margin-right: 10px"></i>
+                    <span data-i18n-key="ui.popup.reset_fields">Reset Fields</span>
+                </button>
+                <div id="charCreator_loadCharSelector" style="width: 200px" data-i18n-attr="title:ui.popup.load_character_data" title="Load Character Data"></div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="tab-buttons">
+                <button class="menu_button tab-button active" data-tab="charCreator_coreFieldsContainer">
+                    <span data-i18n-key="ui.popup.core_fields">Core Fields</span>
+                </button>
+                <button class="menu_button tab-button" data-tab="charCreator_draftFieldsContainer">
+                    <span data-i18n-key="ui.popup.draft_fields">Draft Fields</span>
+                </button>
+                <div class="right-aligned">
+                    <button id="charCreator_addDraftField" class="menu_button" title="Add a temporary draft field">
+                        <i class="fa-solid fa-plus"></i> <span data-i18n-key="ui.popup.add_draft_field">Add Draft Field</span>
+                    </button>
+                    <button id="charCreator_exportDraftFields" class="menu_button" title="Export draft fields">
+                        <i class="fa-solid fa-file-export" style="margin-right: 10px"></i> <span data-i18n-key="ui.popup.export">Export</span>
+                    </button>
+                    <button id="charCreator_importDraftFields" class="menu_button" title="Import draft fields">
+                        <i class="fa-solid fa-file-import" style="margin-right: 10px"></i> <span data-i18n-key="ui.popup.import">Import</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content Area -->
+            <div class="tab-content-area">
+                <!-- Core Fields Tab -->
+                <div id="charCreator_coreFieldsContainer" class="card tab-content active">
+                    <h3 data-i18n-key="ui.popup.core_character_fields">Core Character Fields</h3>
+                    <!-- Core Character Field Template -->
+                    <template id="charCreator_coreFieldTemplate">
+                        <div class="character-field core-field">
+                            <label></label>
+                            <div class="field-container">
+                                <textarea class="text_pole textarea_compact field-value-textarea" rows="3"></textarea>
+                                <div style="display: flex; flex-direction: column">
+                                    <button class="menu_button generate-field-button" data-i18n-attr="title:ui.buttons.generate" title="Generate field content">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    </button>
+                                    <button
+                                        class="menu_button continue-field-button"
+                                        data-i18n-attr="title:ui.buttons.continue"
+                                        title="Continue from current content"
+                                    >
+                                        <i class="fa-solid fa-rotate-right"></i>
+                                    </button>
+                                    <button class="menu_button clear-field-button" data-i18n-attr="title:ui.buttons.clear" title="Clear field content">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                    <button
+                                        class="menu_button compare-field-button"
+                                        data-i18n-attr="title:ui.buttons.compare"
+                                        title="Compare with loaded character"
+                                    >
+                                        <i class="fa-solid fa-code-compare"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="field-prompt-container">
+                                <textarea class="text_pole textarea_compact field-prompt-textarea" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- Template for Alternate Greetings Section -->
+                    <template id="charCreator_alternateGreetingsTemplate">
+                        <div class="character-field core-field alternate-greetings-field">
+                            <label data-i18n-key="ui.popup.alternate_greetings">Alternate Greetings</label>
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px">
+                                <!-- Container for tabs and add button -->
+                                <div
+                                    class="alternate-greetings-tabs"
+                                    style="display: flex; flex-wrap: wrap; gap: 5px; flex-grow: 1"
+                                >
+                                    <!-- Tab buttons will be added dynamically here -->
+                                </div>
+                                <button
+                                    class="menu_button add-alternate-greeting-button"
+                                    data-i18n-attr="title:ui.popup.add"
+                                    title="Add a new alternate greeting"
+                                >
+                                    <i class="fa-solid fa-plus"></i> <span data-i18n-key="ui.popup.add">Add</span>
+                                </button>
+                            </div>
+                            <!-- Placeholder for when no greetings exist -->
+                            <p class="subtle no-greetings-placeholder" style="display: none; margin-bottom: 10px" data-i18n-key="ui.popup.no_greetings_placeholder">
+                                No alternate greetings defined. Click "Add" to create one.
+                            </p>
+                            <div class="field-container">
+                                <!-- Mimic draft field structure -->
+                                <div class="alternate-greetings-content-area" style="flex-grow: 1">
+                                    <!-- Tab content (containing textareas) will be added dynamically here -->
+                                </div>
+                                <div style="display: flex; flex-direction: column">
+                                    <!-- Side buttons container -->
+                                    <button
+                                        class="menu_button generate-alternate-greeting-button"
+                                        data-i18n-attr="title:ui.buttons.generate"
+                                        title="Generate content for the current greeting"
+                                        disabled
+                                    >
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    </button>
+                                    <button
+                                        class="menu_button clear-alternate-greeting-button"
+                                        data-i18n-attr="title:ui.buttons.clear"
+                                        title="Clear content for the current greeting"
+                                        disabled
+                                    >
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                    <button
+                                        class="menu_button delete-alternate-greeting-button"
+                                        data-i18n-attr="title:ui.buttons.delete"
+                                        title="Delete this alternate greeting"
+                                        disabled
+                                    >
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Draft Fields Tab -->
+                <div id="charCreator_draftFieldsContainer" class="card tab-content">
+                    <h3 data-i18n-key="ui.popup.draft_fields_temporary">Draft Fields (Temporary)</h3>
+                    <p class="subtle" data-i18n-key="ui.popup.draft_fields_description">
+                        These fields are temporary and only used to keep AI informed about the character. They won't be
+                        saved to the character card.
+                    </p>
+                    <!-- Draft Field Template -->
+                    <template id="charCreator_draftFieldTemplate">
+                        <div class="character-field draft-field">
+                            <div class="draft-field-header">
+                                <label></label>
+                            </div>
+                            <div class="field-container">
+                                <textarea class="text_pole textarea_compact field-value-textarea" rows="3"></textarea>
+                                <div style="display: flex; flex-direction: column">
+                                    <button class="menu_button generate-field-button" data-i18n-attr="title:ui.buttons.generate" title="Generate field content">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    </button>
+                                    <button
+                                        class="menu_button continue-field-button"
+                                        data-i18n-attr="title:ui.buttons.continue"
+                                        title="Continue from current content"
+                                    >
+                                        <i class="fa-solid fa-rotate-right"></i>
+                                    </button>
+                                    <button class="menu_button clear-field-button" data-i18n-attr="title:ui.buttons.clear" title="Clear field content">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                    <button class="menu_button delete-draft-field-button" data-i18n-attr="title:ui.buttons.delete" title="Delete Draft Field">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="field-prompt-container">
+                                <textarea class="text_pole textarea_compact field-prompt-textarea" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </template>
+
+                    <!-- Template for a single greeting tab content -->
+                    <template id="charCreator_alternateGreetingTabContentTemplate">
+                        <div class="alternate-greeting-tab-content" style="display: none">
+                            <textarea
+                                class="text_pole textarea_compact field-value-textarea alternate-greeting-textarea"
+                                rows="4"
+                                data-i18n-attr="placeholder:ui.popup.greeting_placeholder"
+                                placeholder="Enter greeting content..."
+                            ></textarea>
+                            <div class="field-prompt-container" style="margin-top: 5px">
+                                <!-- Added prompt container -->
+                                <textarea
+                                    class="text_pole textarea_compact field-prompt-textarea alternate-greeting-prompt-textarea"
+                                    rows="2"
+                                    data-i18n-attr="placeholder:ui.popup.greeting_prompt_placeholder"
+                                    placeholder="Enter specific prompt for this greeting..."
+                                ></textarea>
+                            </div>
+                        </div>
+                    </template>
+                    <div id="charCreator_draftFieldsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
