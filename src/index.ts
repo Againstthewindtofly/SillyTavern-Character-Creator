@@ -459,6 +459,8 @@ async function handlePopupUI() {
       const popupContainer = document.getElementById('charCreatorPopup');
       if (!popupContainer) return;
 
+      await localization.initialize(globalContext);
+      console.log("汉化弹窗")
       localization.translateUI();
 
       const settings = settingsManager.getSettings();
