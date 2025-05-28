@@ -1104,15 +1104,13 @@ function _handlePopupUI() {
                       large: true,
                       wide: true
                     });
-                    console.log("[".concat(settings_js_1.extensionName, "] \u6C49\u5316\u5F39\u7A97"));
                     popupContainer = document.getElementById('charCreatorPopup');
                     if (popupContainer) {
-                      _context19.next = 10;
+                      _context19.next = 9;
                       break;
                     }
                     return _context19.abrupt("return");
-                  case 10:
-                    console.log("[".concat(settings_js_1.extensionName, "] \u6C49\u5316\u5F39\u7A972"));
+                  case 9:
                     localization_js_1.localization.translateUI();
                     settings = settings_js_1.settingsManager.getSettings(); // --- Setup Left Column ---
                     // Connection Profile Dropdown
@@ -2442,7 +2440,7 @@ function _handlePopupUI() {
                         });
                       }
                     });
-                  case 128:
+                  case 126:
                   case "end":
                     return _context19.stop();
                 }
@@ -2639,7 +2637,6 @@ var Localization = /*#__PURE__*/function () {
     value: function translateUI() {
       // 翻译弹出窗口
       var popup = document.getElementById('charCreatorPopup');
-      console.log("[".concat(settings_1.extensionName, "] translateUI popup: ").concat(!!popup));
       if (popup) {
         this.translateElement(popup);
       }
