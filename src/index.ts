@@ -456,11 +456,11 @@ async function handlePopupUI() {
         wide: true,
       });
 
+      console.log(`[${extensionName}] 汉化弹窗`);
       const popupContainer = document.getElementById('charCreatorPopup');
       if (!popupContainer) return;
 
-      await localization.initialize(globalContext);
-      console.log("汉化弹窗")
+      console.log(`[${extensionName}] 汉化弹窗2`);
       localization.translateUI();
 
       const settings = settingsManager.getSettings();

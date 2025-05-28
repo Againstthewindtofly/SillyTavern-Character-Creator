@@ -87,6 +87,7 @@ class Localization {
   public translateUI(): void {
     // 翻译弹出窗口
     const popup = document.getElementById('charCreatorPopup');
+    console.log(`[${extensionName}] translateUI popup: ${!!popup}`);
     if (popup) {
       this.translateElement(popup as HTMLElement);
     }
