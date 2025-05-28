@@ -61,7 +61,7 @@ async function handleSettingsUI() {
 
   const settingsContainer = document.querySelector('.charCreator_settings');
   if (!settingsContainer) return;
-  
+
   // 初始化本地化系统
   await localization.initialize(globalContext);
   localization.translateUI();
@@ -458,6 +458,8 @@ async function handlePopupUI() {
 
       const popupContainer = document.getElementById('charCreatorPopup');
       if (!popupContainer) return;
+
+      localization.translateUI();
 
       const settings = settingsManager.getSettings();
 
