@@ -22,7 +22,7 @@ class Localization {
     this.globalContext = globalContext;
     
     // 尝试从浏览器或用户设置中获取语言
-    const userLanguage = navigator.language.split('-')[0] || 'en';
+    const userLanguage = navigator.language.split('-')[0] || 'zh';
     
     // 如果是中文，加载中文翻译
     if (userLanguage === 'zh') {

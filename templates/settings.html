@@ -1,22 +1,24 @@
 <div class="charCreator_settings">
     <div class="inline-drawer">
         <div class="inline-drawer-toggle inline-drawer-header">
-            <b>Character Creator</b>
+            <b data-i18n-key="ui.settings.title">Character Creator</b>
             <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
         </div>
         <div class="inline-drawer-content">
             <div style="margin-top: 10px">
                 <div class="title_restorable">
-                    <span>Main Context Template</span>
+                    <span data-i18n-key="ui.settings.main_context_template">Main Context Template</span>
                     <button
                         id="charCreator_restoreMainContextTemplateDefault"
                         class="menu_button fa-solid fa-undo interactable"
+                        data-i18n-attr="title:ui.settings.restore_default"
                         title="Restore main context template to default"
                     ></button>
                 </div>
                 <select
                     id="charCreator_mainContextTemplatePreset"
                     class="text_pole"
+                    data-i18n-attr="title:ui.settings.select_template"
                     title="Select Main Context Template to Edit"
                 ></select>
                 <div id="charCreator_mainContextList"></div>
@@ -26,21 +28,24 @@
 
             <div style="margin-top: 10px">
                 <div class="title_restorable">
-                    <span>Prompt Templates</span>
+                    <span data-i18n-key="ui.settings.prompt_templates">Prompt Templates</span>
                     <button
                         id="charCreator_restoreSystemPromptDefault"
                         class="menu_button fa-solid fa-undo interactable"
+                        data-i18n-attr="title:ui.settings.restore_default"
                         title="Restore selected prompt to default"
                     ></button>
                 </div>
                 <select
                     id="charCreator_systemPromptPreset"
                     class="text_pole"
+                    data-i18n-attr="title:ui.settings.select_prompt"
                     title="Select System Prompt to Edit"
                 ></select>
                 <textarea
                     id="charCreator_systemPromptContent"
                     class="text_pole textarea_compact"
+                    data-i18n-attr="placeholder:ui.settings.prompt_placeholder"
                     placeholder="Edit the selected system prompt template here..."
                     rows="6"
                     style="margin-top: 5px"
@@ -52,15 +57,15 @@
 
             <label class="checkbox_label" for="charCreator_showSaveAsWorldInfo" style="margin-top: 15px">
                 <input type="checkbox" id="charCreator_showSaveAsWorldInfo" />
-                Show "Save as World Info Entry" option in popup
+                <span data-i18n-key="ui.settings.show_save_as_wi">Show "Save as World Info Entry" option in popup</span>
             </label>
 
             <hr style="margin: 15px 0" />
 
             <div style="text-align: center; margin-top: 15px">
                 <button id="charCreator_resetEverything" class="menu_button danger_button" style="width: auto">
-                    <i style="margin-right: 10px" class="fa-solid fa-triangle-exclamation"></i> I messed up, reset
-                    everything
+                    <i style="margin-right: 10px" class="fa-solid fa-triangle-exclamation"></i> 
+                    <span data-i18n-key="ui.settings.reset_everything">I messed up, reset everything</span>
                 </button>
             </div>
         </div>
